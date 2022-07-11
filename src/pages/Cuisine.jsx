@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { Link, useParams} from "react-router-dom";
 
-const Cuisine = (props) => {
+const Cuisine = () => {
   const [cuisine, setCuisine] = useState([]);
   let params = useParams();
+
   const getCuisine = async(name) => {
     const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}`);
     const recipes = await data.json();
-    console.log('rec', recipes)
+
     setCuisine(recipes.results);
   }
   useEffect(() => {
@@ -37,7 +38,7 @@ const Cuisine = (props) => {
 
 const Grid = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   grid-gap: 3rem;
 `;
 

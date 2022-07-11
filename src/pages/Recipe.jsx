@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 import {useParams} from "react-router-dom";
 
-const Recipe = (props) => {
+const Recipe = () => {
   let { id } = useParams();
   const [details, setDetails] = useState({});
   const [activeTab, setActiveTab] = useState('instructions');
@@ -10,6 +10,7 @@ const Recipe = (props) => {
   const fetchDetails = async () => {
     let data = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
     let recipe = await data.json();
+
     setDetails(recipe)
   }
 
@@ -57,9 +58,18 @@ const Recipe = (props) => {
 };
 
 const DetailWrapper = styled.div`
-  margin-top: 10rem;
-  margin-bottom: 5rem;
-  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  
+  & > div {
+    margin-bottom: 30px;
+    width: 100%;
+    
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
   
   button.active {
     background: linear-gradient(35deg, #494949, #313131);
@@ -67,31 +77,51 @@ const DetailWrapper = styled.div`
   }
   
   h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
   }
   
   li {
-    font-size: 1.2rem;
-    line-height: 2.5rem;
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 18px;
   }
   
   ul {
-    margin-top: 2rem;
+    margin-top: 30px;
+    padding-left: 15px;
+  }
+  
+  @media (min-width: 980px) {
+    margin-top: 50px;
+    display: flex;
   }
 `;
 
 const Button = styled.button`
-  padding: 1rem 2rem;
-  color: #313131;
+  margin-right: 30px;
+  padding: 15px 30px;
   background: #fff;
   border: 2px solid black;
-  margin-right: 2rem;
   font-weight: 600;
+  color: #313131;
   cursor: pointer;
 `;
 
 const Info = styled.div`
-  margin-left: 10rem;
+  
+  h3 {
+    font-size: 14px;
+    line-height: 16px;
+    
+    @media (min-width: 680px) {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+  
+  @media (min-width: 980px) {
+    margin-left: 30px;
+  }
 `;
 
 export default Recipe;

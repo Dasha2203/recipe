@@ -34,16 +34,20 @@ const SCard = styled.div`
     z-index: 10;
     left: 50%;
     bottom: 0;
-    transform: translate(-50%, 0);
-    color: white;
-    width: 100%;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1rem;
     height: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    transform: translate(-50%, 0);
+    
+    @media (min-width: 640px) {
+      font-size: 16px;
+    }
   }
 `;
 
