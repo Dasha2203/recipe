@@ -36,29 +36,35 @@ export const Popular = () => {
     return (
       <Wrapper>
         <h3>Popular picks</h3>
-        <Splide
-          options={{
-            perPage: 5,
-            arrows: false,
-            pagination: false,
-            drag: 'free',
-            gap: '1rem',
-            breakpoints: {
-              980: {
-                perPage: 3,
-              },
-              640: {
-                perPage: 2,
-              },
-            }
-          }}
-        >
-          {popular.map(recipe => (
-            <SplideSlide key={recipe.id}>
-              <Card recipe={recipe}/>
-            </SplideSlide>
-          ))}
-        </Splide>
+
+        {!popular.length && 'Not found'}
+
+        {popular.length && (
+          <Splide
+            options={{
+              perPage: 5,
+              arrows: false,
+              pagination: false,
+              drag: 'free',
+              gap: '1rem',
+              breakpoints: {
+                980: {
+                  perPage: 3,
+                },
+                640: {
+                  perPage: 2,
+                },
+              }
+            }}
+          >
+            {popular.map(recipe => (
+              <SplideSlide key={recipe.id}>
+                <Card recipe={recipe}/>
+              </SplideSlide>
+            ))}
+          </Splide>
+        )}
+
       </Wrapper>
     );
 };

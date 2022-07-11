@@ -21,9 +21,16 @@ const Searched = () => {
 
   return (
     <Grid>
-      {searchedRecipes.map(recipe => (
-        <Card key={recipe.id} recipe={recipe}/>
-      ))}
+
+      {
+        searchedRecipes.length ?
+          searchedRecipes.map(recipe => (
+            <Card key={recipe.id} recipe={recipe}/>
+          ))
+          :
+          'Not found'
+      }
+
     </Grid>
   )
 };

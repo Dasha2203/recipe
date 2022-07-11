@@ -32,30 +32,36 @@ const Veggie = () => {
   return (
     <Wrapper>
       <h3>Our vegetarian picks</h3>
-      <Splide
-        options={{
-          perPage: 3,
-          arrows: false,
-          pagination: false,
-          drag: 'free',
-          gap: '2rem',
-          breakpoints: {
-            980: {
-              perPage: 2,
-            },
-            640: {
-              perPage: 1,
-              gap: '1rem',
-            },
-          }
-        }}
-      >
-        {veggie.map(recipe => (
-          <SplideSlide key={recipe.id}>
-            <Card recipe={recipe}/>
-          </SplideSlide>
-        ))}
-      </Splide>
+
+      {!veggie.length && 'Not found'}
+
+      {veggie.length && (
+        <Splide
+          options={{
+            perPage: 3,
+            arrows: false,
+            pagination: false,
+            drag: 'free',
+            gap: '2rem',
+            breakpoints: {
+              980: {
+                perPage: 2,
+              },
+              640: {
+                perPage: 1,
+                gap: '1rem',
+              },
+            }
+          }}
+        >
+          {veggie.map(recipe => (
+            <SplideSlide key={recipe.id}>
+              <Card recipe={recipe}/>
+            </SplideSlide>
+          ))}
+        </Splide>
+      )}
+
     </Wrapper>
   )
 };
